@@ -1,0 +1,161 @@
+#include "functions.h"
+
+//global variables
+int currentLineNum = 1;
+//end global variables
+
+/**
+ * Note lines must be less than BUFFER_SIZE in order to return a full line
+**/
+char* gimmeALine(char *fileName) {
+	char buffer[BUFFER_SIZE], *line = malloc(BUFFER_SIZE);
+	int filePointer, n, i, lineNum = 1;
+	char continueReadingFile = 1;
+
+	// int leftOverLineIndex = 1;
+	// leftOverLineIndex--;
+	char leftOverLine[BUFFER_SIZE], tmp[BUFFER_SIZE], tmpLine[BUFFER_SIZE];
+
+	memset(&buffer[0], '\0', sizeof(buffer)); //clean buffer incase buffer isn't filled completly -> not bad memory
+	memset(&leftOverLine[0], '\0', sizeof(leftOverLine)); //clean buffer incase buffer isn't filled completly -> not bad memory
+	memset(&tmp[0], '\0', sizeof(tmp)); //clean buffer incase buffer isn't filled completly -> not bad memory
+	memset(&tmpLine[0], '\0', sizeof(tmpLine)); //clean buffer incase buffer isn't filled completly -> not bad memory
+
+	if( (filePointer = myOpenFile(fileName, O_RDONLY)) > 0 ) {
+		while ( continueReadingFile == 1 && (n = read(filePointer, buffer, BUFFER_SIZE)) > 0 ) {
+			int lastLineIndex = 0, j = 0;
+			memset( &tmp[0], '\0', sizeof(tmp) ); //clean buffer incase buffer isn't filled completly -> not bad memory
+			memset( &line[0], '\0', BUFFER_SIZE ); //clean buffer incase buffer isn't filled completly -> not bad memory
+			for( i = 0; i < ((int) BUFFER_SIZE); i++ ) {
+				if( buffer[i] == '\n' ) { //split on new line
+					//clear next line so buffer fills up for next iteration
+					if( currentLineNum == lineNum ) {
+						int lineLength = max(0, i-lastLineIndex-1);
+						// printf("\nLastLineIndex:%d CurLineNum:%d LineNum:%d Index:%d LineLth:%d\n",
+						// 	lastLineIndex, currentLineNum, lineNum, i, lineLength);
+						memcpy( tmpLine, &buffer[lastLineIndex+1], lineLength );
+						// printf("\nLastLine: '%s'\ntmpLine: '%s'", leftOverLine, tmpLine);
+						// for(j = 0; j < lineLength; j++){
+						// 	printf("\nline[%d]:%c or %d", j, tmpLine[j], tmpLine[j]);
+						// }
+						// printf("\nline[%d]:%c or %d", i, buffer[i], buffer[i]);
+						strcpy(line, leftOverLine);
+						strcat(line, tmpLine);
+						currentLineNum++;
+						continueReadingFile = 0;
+						break;
+					} else {
+						lastLineIndex = i;
+					}
+					lineNum++;
+					j = 0;
+					memset( &tmp[0], '\0', sizeof(tmp) ); //clean buffer incase buffer isn't filled completly -> not bad memory
+					memset( &leftOverLine[0], '\0', sizeof(leftOverLine) ); //clean buffer incase buffer isn't filled completly -> not bad memory
+				} else {
+					tmp[j] = buffer[i];
+					j++;
+				}
+			}
+			strcpy(leftOverLine, tmp);
+			memset( &buffer[0], '\0', BUFFER_SIZE ); //clean buffer incase buffer isn't filled completly -> not bad memory
+
+		}
+	} else {
+		printToStandardOutput("\nProgram failed. Invalid file.\n", 8, "Failed outputing failed error");
+	}
+	myCloseFile(filePointer);
+	return line;
+}
+
+/**
+ * Fill a struct w/csv line
+**/
+countryType* fillAStruct(char *line){
+	countryType country;
+	countryPtr countryPtr = malloc(sizeof(country));
+
+	int fieldCount;
+    char *token;
+    // Now let's use that linechar *Name
+    char *lineCopy = malloc(strlen(line) + 1);
+    strncpy(lineCopy, line, strlen(line) + 1);
+    while ((token = strtok_r(lineCopy, ",", &lineCopy)) != NULL) {
+		// printf("\nToken:%s", token);
+        switch (fieldCount) {
+            case 0:
+                country.id = atoi(token);
+                break;
+            case 1:
+                strncpy(country.code, token, strlen(token));
+                break;
+            case 2:
+                strncpy(country.name, token, strlen(token));
+                break;
+            case 3:
+                strncpy(country.continent, token, strlen(token));
+                break;
+            case 4:
+                strncpy(country.region, token, strlen(token));
+                break;
+            default:
+                break;
+        }
+        fieldCount++;
+    }
+
+	*countryPtr = country;
+	return countryPtr;
+}
+
+/**
+ * Prints to standard output
+**/
+void printToStandardOutput(char *text, int textSize, char errorMsg[]) {
+	if ( write(STDOUT_FILENO, text, textSize) != textSize ) {
+		err_sys(errorMsg);
+	}
+	return;
+} //end printToStandardOutput()
+
+/**
+ * Open file and return its file pointer
+**/
+int myOpenFile(char *fileName, int permissions) {
+	int filePointer;
+	if( (filePointer = open(fileName, permissions)) < 0 ) {
+		err_sys("Error opening file");
+	}
+	return filePointer;
+} //end myOpenFile()
+
+/**
+ * Close file opened
+**/
+int myCloseFile(int filePointer) {
+	int success;
+
+	if(close(filePointer) < 0) {
+		success = 0;
+		err_sys("Error closing file");
+	} else {
+		success = 1;
+	}
+
+	return success;
+} //end myCloseFile()
+
+/*
+ * Prepends t into s. Assumes s has enough space allocated
+ * for the combined string.
+*/
+void prepend(char* s, const char* t){
+    size_t len = strlen(t);
+    size_t i;
+
+    memmove(s + len, s, strlen(s) + 1);
+
+    for (i = 0; i < len; ++i)
+    {
+        s[i] = t[i];
+    }
+} //end prepend()
