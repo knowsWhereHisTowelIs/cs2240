@@ -1,0 +1,23 @@
+total 41036
+drwxr-xr-x 3 mini mini     4096 Sep 24 16:49 a0
+drwxr-xr-x 3 mini mini     4096 Sep 19 15:40 a1
+drwxr-xr-x 4 mini mini     4096 Sep 30 20:16 a3
+-rw-r--r-- 1 mini mini   184624 Oct  1 16:44 a3.zip
+drwxr-xr-x 5 mini mini     4096 Oct 20 17:11 a4
+drwxr-xr-x 3 mini mini     4096 Oct 20 17:11 a4_old
+-rw-r--r-- 1 mini mini    58519 Oct 20 17:10 a4.zip
+drwxr-xr-x 6 mini mini     4096 Nov 11 12:38 a5
+-rw-r--r-- 1 mini mini   166918 Nov 11 01:22 a5.zip
+drwxr-xr-x 4 mini mini     4096 Nov 12 16:31 a6
+-rw-r--r-- 1 mini mini 33121111 Sep  8 17:10 AdvancedProgrammingintheUNIXEnvironmentThirdEdition.pdf
+-rw-r--r-- 1 mini mini   264714 Sep  8 17:09 apue.2e.zip
+-rw-r--r-- 1 mini mini     4107 Sep  8 17:09 apue.h
+drwxr-xr-x 6 mini mini     4096 Oct 27 08:01 bens
+-rw-r--r-- 1 mini mini   348819 Sep  8 21:35 cs2240_codingstd_spring2011-1.pdf
+drwxr-xr-x 3 mini mini     4096 Sep 20 16:18 development
+-rw-r--r-- 1 mini mini     1831 Sep  8 17:09 error.c
+drwxr-xr-x 2 mini mini     4096 Oct 27 16:42 exam
+-rwxr-xr-x 1 mini mini      281 Nov 12 16:36 MY_SHELL_BUFFER
+drwxr-xr-x 2 mini mini     4096 Oct 25 20:28 New folder
+-rw-r----- 1 mini mini  7700942 Sep 28 12:33 Richard Reese Understanding and Using C Pointers.pdf
+drwxr-xr-x 2 mini mini     4096 Oct 20 17:16 Untitled Folder

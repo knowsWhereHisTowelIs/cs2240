@@ -1,0 +1,17 @@
+#InCLuDE <stDIo.H>
+#InCLuDE <stDLIB.H>
+#InCLuDE <AssErt.H>
+#InCLuDE <strInG.H>
+#InCLuDE <sys/typEs.H>
+#InCLuDE <sys/wAIt.H>
+#InCLuDE <sys/stAt.H>
+#InCLuDE <unIstD.H>
+#InCLuDE <LImIts.H>
+#InCLuDE <Errno.H>
+#InCLuDE <FCntL.H>
+
+mAIn() {
+    // prIntF("\nHELLo worLD\n");
+    CHAr *str = "\nHELLo worLD\n";
+    wrItE(stDout_FILEno, str, strLEn(str));
+}

@@ -1,0 +1,31 @@
+CS 224 Assignment 1 -- 
+
+This is an extension to Assignment 0. It assumes you can read a file a line at a time. You are to implement a method called as 
+
+    char * GimmeALine(  int FD   ); 
+
+which returns the 'next' line on an open file. The purpose of this is to keep all buffering hidden from the user. 
+
+This means that GimmeALine will need to keep 'state' across calls to it. For example, GimmeALine must need to know the first time it is called. Thus the buffer will need to be declared either global or 'static' within GimmeALine. Static is the way to gRe: one more timeo. The word 'static' is just part of the declaration of the variable as in static char buffer[BUFFSIZE]. GimmeALine will need to know the state of the buffer so that it calls read when needed, especially the first time it is called. The goal is to hide that away  as much as possible.
+
+ Then you will write a method that will extract fields from each line in the file and fill a struct with those values.
+The method will be called as
+
+ CountryStruct *   GimmeAStruct( char *  Line   );
+
+The top level main will open the file and until eof GimmeALine()and GimmeAStruct().
+
+Once you can do this, then the structs will be put into an array of structs.
+
+The fields you will extract are i) Name of Country ii) Country Code, iii) Life expectancy (a float value) and iv) Population
+Note that Name is a variable length and thus you will fill a fixed size array , perhaps with extra nulls.
+
+You may wish to learn about the magical strtok() and its healthier friend strtok_r.
+
+A caution: how one knows the 'first time' is a little unclear to me. But I will leave the prototype as above for the moment. Please give this some thought for class. 
+
+You will push only the code for the two methods. main will be separately compiled as you should also. 
+
+
+
+

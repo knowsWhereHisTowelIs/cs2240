@@ -1,0 +1,50 @@
+CS 224, Fall 2015
+Assignment 3
+
+Part A is due on Tuesday, September 22
+Part B is due on Tuesday, September 29. 
+Be forewarned. Another assignment will be given on September 24. 
+
+A) The Memory Version
+This assignment will weave together the two modules that read lines from the AllCountries.dat file, creating a CountryStruct for each country found in the buffered lines. The CountryStruct is defined as 
+
+     struct CountryStruct 
+          {char Code[4]; // allows for a NULL
+            char *Name; // a pointer to ... ? 
+            float MTTF; // Life Expectancy
+           int Population: // 
+          }
+
+Your main will use the previously written functions from a1 (I regret starting with zero and thus I have skipped 2) and create a searchable array of Country structures. You will need to dynamically allocate memory in this assignment both for the Name field and for each struct. 
+
+You MUST declare this searchable array as CountryStruct ** and initially allocate space for 50 Countrys. Thus you must 'realloc' when you have to allocate more space for this array. 
+
+After you have created the array you should demonstrate that your array is properly ordered by searching for obvious countries: the first ,last , second to last , non-existent etc. Our tester will make some obvious choices. N.B. User input for the key can use fgets() i.e. Chapter 5 functionality for reading the keyboard input. 
+
+Part B) The binary file with directory. 
+The internal data structure in A) will be written to a 'random access' file along with a second 'directory file'. Some of the dynamic values in A) will need to be reworked. For example, the char * field has no meaning when this data is written to a file that is then closed. The records written will be variable size so an additional size field must be provided as part of the record you write to your file. 
+
+In part B) you must create a directory (indexed by the three letter CODE) file that provides the (CODE,offset) pairs that allow the user input to be mapped to an offset for a file that is read. To test this, you must create the two files (directory and data), close them, open them, and then use them. 
+
+Deliverables: 
+Part A. Source code plus makefile that produces ONLY a.out which takes input from keyboard to search for a country by code. 
+
+Your program should implment the following *exactly*:
+Enter 3 Letter Code:<and wait for 3 letters followed by \n">
+Retrieved:
+Country:<name is output with \n
+Code:<3 letter code followed by \n
+MTTF:<output using %f descriptor followed by \n">
+Population:<%u output followed by\n>
+Enter 3 Letter Code:
+     .
+     .
+     .
+
+until 3 letter Code is ZZZ.
+
+Part B: 
+Source code plus Makefile that outputs a.out and two other files with names
+BINARYCOUNTRIES.bin and DIRECTORY
+
+Then the above exchange (part A) is implemented except that DIRECTORY is used to fetch the country information for output. 3 letter codes and output go to the console. 

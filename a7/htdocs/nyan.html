@@ -1,0 +1,281 @@
+<html>
+<head> 
+		<title>NYAN NYAN NYAN NYAN</title>
+
+    <meta name="title" content="Nyan Nyan Nyan Cat" />
+    <meta name="description" content="Nyanit Adds NyanCat to Any Webpage for Teh Lulz" />
+
+         
+	<style type="text/css" media="screen"> 
+		body{margin:0;padding:0;overflow:hidden;}
+		#nyanbox div{position:absolute;}
+		.nyancat{position:absolute;}
+		div#nyanfeet{ position:fixed;position:absolute;right:0;bottom:0;padding:0;margin:0; width:100%;background:#ccc;text-align:left;}
+		div#nyanfeet a{margin:0;}
+		#nyanfeetpic,#nyanfeetgen{float:left}
+		#nyanfronds{float:right;margin:6px 5px 0}
+		#nyanfeetpic{padding:6px 50px 0 12px}
+		#nyanfeetgen{padding:3px 0 0}
+		#nyanfeetgen input[type="text"]{width:332px}
+          #nyanfeet{ display:none; }
+	</style>
+
+    <link rel="shortcut icon" href="favicon.gif">
+    <link rel="icon" type="image/gif" href="favicon.gif" />  
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://nyanit.com/js/soundmanager2-nodebug-jsmin.js"></script>
+
+    <script type="text/javascript">
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-1472145-46']);
+       _gaq.push(['_trackPageview']);
+      
+       (function() {
+         var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+      'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+       })();
+    </script>
+
+	</head> 
+	<body>
+    
+		<iframe id="nyantop" width="100%" height="100%" src="127.0.0.1:4000/index.html" border="0" noborder="noborder" frameborder="0" padding="0" spacing="0"></iframe> 
+		<div id="nyanbox"></div>
+		<div id="nyanfeet">
+			<div id=nyanfeetpic>
+				<a href="http://nyanit.com/">nyanit dot com</a> - <a href="http://plusrage.com/">plusrage</a> - <a href="http://misnamed.net/">misnamed</a>
+			</div>
+			
+			<div id=nyanfeetgen>
+				<input type=text placeholder="http://site-to-nyan.wut" id="gnyanurl">
+				<input type=submit value=nyanit onclick="gnyanit()">
+			</div>
+			
+			<div id=nyanfronds>
+				
+				<iframe id="nffb" src="" scrolling="no" frameborder="0" style="border:none;overflow:hidden;width:85px;height:21px"allowTransparency="true"></iframe>
+				
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="nyanit" data-related="nyanit" data-hashtags="nyanit">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				
+				<su:badge layout="3"></su:badge>
+				
+				<a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"><img src="http://nyanit.com/delicious.png" alt="Delicious" /></a>
+
+			</div>
+		</div> 
+	
+		
+<script type="text/javascript">
+var gnyanit=function(){
+	document.location='http://nyanit.com/'+$('#gnyanurl').val();
+}
+
+
+var loc = document.location;
+$('#nffb').attr('src', 'http://www.facebook.com/plugins/like.php?href='+loc+'&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=249522331733925');
+</script>
+
+<script type="text/javascript">
+  (function() {
+    var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
+    li.src = 'https://platform.stumbleupon.com/1/widgets.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
+  })();
+</script>		
+		
+		
+		
+        
+    
+    <script type="text/javascript">
+
+    // animations , SEND YOURS !!
+      // spin/rotate, diagonal, opacity, grow/shrink
+      // in ur room!!
+
+      // NYYAAAAANNN!
+
+      zoom = 7000;          
+
+      var flyright = function(next) {
+        lpos = -$(this).width()*1.3;
+        lend = $(window).width(); 
+        tpos = Math.random() * ($(window).height()-$(this).height());
+        $(this).offset({"left":lpos,"top":tpos});
+        $(this).delay(Math.random() * 3000).animate({ 
+            left: lend
+          },
+          {
+            queue:false,
+            duration: zoom,
+            easing:"linear",
+            complete: function() {moar($(this));next();}
+          }
+        ).queue(flynext());
+      };
+
+      var flyleft = function(next) {
+        lpos = $(window).width();
+        lend = -$(this).width()*1.3; 
+        tpos = Math.random() * ($(window).height()-$(this).height()); 
+        $(this).offset({"left":lpos,"top":tpos});
+        $(this).delay(Math.random() * 3000).animate({ 
+            left: lend
+          },
+          {
+            queue:false,
+            duration: zoom,
+            easing:"linear",
+            complete: function() {
+              moar($(this));
+              next();
+              }
+          }
+        ).queue(flynext());
+      };
+
+      // array of animation functions
+      var fly = [flyright,flyleft];
+
+    </script>
+    <script type='text/javascript'>
+      //<![CDATA[
+      soundManager.url = 'http://nyanit.com/swfs/';
+      soundManager.flashVersion = 9;
+      soundManager.debugMode = false;
+      soundManager.useFlashBlock = false;
+      soundManager.onready(function() {
+          nyannyan = soundManager.createSound({
+          id: 'loop',
+          // url: '/mp3s/nyan-looped.mp3',
+          // url: 'http://s3.amazonaws.com/nyan.cat/nyan-looped.mp3',
+          // url: 'http://nyanit.com/audio/nyanlooped.mp3',
+		  url: 'http://cdn.nyanit.com/audio/nyanlooped.mp3',		  
+          autoLoad: true,
+          autoPlay: true,
+          loops: 9999999,
+          onload: function() {
+          },
+          onfinish: function() {
+            // if($.browser.SafariMobile){
+            //   this.play();
+            // }
+          },
+          volume: 40
+        });
+        //nyannyan.play();
+		if (nyanuri == "nyan.cat") { nyannyan.stop(); }
+      });
+
+      //]]>
+
+      </script>
+
+
+    <script type="text/javascript">
+
+    // MOAR!!!
+
+      function moar(thiscat) {
+        //use .data() to track laps for each cat.
+        
+        if (thiscat.width() < 250) {
+          thiscat.width(thiscat.width()*1.3);
+          thiscat.height(thiscat.height()*1.3);
+          //animate this with queue:false
+          //add opacity
+        }
+        else if (thiscat.width() < 500) {
+          thiscat.width(thiscat.width()*1.2);
+          thiscat.height(thiscat.height()*1.2);
+          //animate this with queue:false
+          //add opacity
+        }
+        else { // slow down, barely
+          thiscat.width(thiscat.width()*1.1);
+          thiscat.height(thiscat.height()*1.1);        
+        }
+      }
+      
+      cats = 0;
+      quant = 0;
+      function flyflyfly() {
+        cats++;
+        newcatbox = $('<div></div>');
+        newcat = $('<img/>', {
+          src: "http://cdn.nyanit.com/nyan2.gif",
+          //IE 8 chokes on the class here, NYAN
+          //class: "nyancat",
+          click: function() {
+            $(this).parent().remove();
+            cats--;
+            flyflyfly();
+            if ((Math.floor(Math.random() * 3)) < 1) {flyflyfly();}
+            /*
+            quant--;
+            if ($('#nyanbox').children().size() > 0) {
+              flyflyfly();
+            }
+            //nyannyan.setVolume('loop',75);
+            */            
+          }
+        });
+        
+        newcat.addClass("nyancat");
+        newcatbox.append(newcat);
+        $('#nyanbox').append(newcatbox);
+        
+        newcat.width(newcat.width(301*(1/5)));
+        newcat.height(newcat.height(119*(1/5)));
+ 
+        newcat.delay(Math.random() * 2000).queue(flynext());
+      }
+      
+      function flynext() {
+        x = Math.floor(Math.random() * fly.length);
+        if ((Math.floor(Math.random() * 8 * cats)) < 1) {flyflyfly();} 
+        return fly[x];
+      } 
+
+      // grab uri and set iframe src
+     nyanuri = document.location.href.replace('nyan.html', 'index.html');
+	if (nyanuri.search(/https?:\/\/?/) != -1) {
+		nyanuri = nyanuri.replace(/https?:\/\/?/,"");
+     }
+     /**
+     * custom
+	nyanuri = document.location.href.substr(18);
+	if (nyanuri.search(/https?:\/\/?/) != -1) {
+		nyanuri = nyanuri.replace(/https?:\/\/?/,"");
+		window.location = "http://nyanit.com/"+nyanuri;
+	}
+     **/
+
+      $(function() {
+		$("#nyantop").attr("src","http://"+nyanuri);
+		
+		
+        $('#nyantop').height($(window).height()).width($(window).width());
+        $(window).resize(function () {$('#nyantop').height($(window).height()).width($(window).width());});
+        //.css('overflow', 'hidden');
+
+        flyflyfly();
+      });        
+      
+    /*
+    NYAAAN NYYAAAAAN NYAN NYAN NYAAAN NYAAAN NYYAAAAAN NYAN NYAN NYAAAN
+    NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN
+    NYAAN NYAN NYAAAN NYAN NYAN NYAN NYAAN NYAN NYAN NYANNYANNYANNYAN!!!1!11
+    OMG
+    */
+
+
+    </script>
+
+</html>
